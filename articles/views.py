@@ -38,3 +38,33 @@ def topstories(request):
             "links": links
         }
     )
+
+
+def popular(request):
+    results = getResults(f"https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key={config.api_key}")
+    print(results)
+    return render(
+        request,
+        'articles/results.html',
+        {
+            'title': 'Daily News!',
+            "subtitle": "Most Popular Stories",
+            "results": results,
+            "links": links
+        }
+    )
+
+
+def feed(request):
+    results = getResults(f"https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key={config.api_key}")
+    print(results)
+    return render(
+        request,
+        'articles/results.html',
+        {
+            'title': 'Daily News!',
+            "subtitle": "News Feed Stories",
+            "results": results,
+            "links": links
+        }
+    )

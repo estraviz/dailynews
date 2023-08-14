@@ -105,7 +105,21 @@
     </header>
     <h2 class="subtitle my-5">{{ subtitle }}</h2>
     <div class="container">
-      <!-- results -->
+      {% for result in results %}
+      <div class="card flex flex-row">
+        <img src="{{ result.thumbnail }}" alt="{{ result.title }}" width="50" height="50" />
+            <div class="card-content">
+                <div>
+                    <a href="" target="_blank">{{ result.title }}</a>
+                    <span>{{ result.section | lower }}</span>
+                </div>
+                <div>
+                    <p>- {{ result.author }}</p>
+                    <p>{{ result.createdAt | date:"l, F jS, Y" }}</p>
+                </div>
+            </div>
+      </div>
+      {% endfor %}
     </div>
   </body>
 </html>
