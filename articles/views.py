@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from common.utils import getResults
+import config
 
 # https://docs.djangoproject.com/en/4.2/topics/http/views/
 
@@ -24,13 +26,15 @@ def home(request):
 
 
 def topstories(request):
+    results = getResults(f"https://api.nytimes.com/svc/topstories/v2/arts.json?api-key={config.api_key}")
+    print(results)
     return render(
         request,
         'articles/results.html',
         {
             'title': 'Daily News!',
             "subtitle": "Top Stories",
-            "results": [],
+            "results": results,
             "links": links
         }
     )
