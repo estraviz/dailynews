@@ -1,0 +1,75 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: white;
+  margin: 0;
+}
+header .title {
+  background-color: aliceblue;
+  color: #3498db;
+  margin: 0;
+  padding: 1.8rem;
+  text-align: center;
+  font-size: 2.5rem;
+}
+.subtitle {
+  color: #666;
+  text-align: center;
+}
+.container {
+  margin: 0 auto;
+  width: 80%;
+}
+.nav {
+  background-color: #3498db;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+.nav ul {
+  padding: 0.5rem 0;
+  margin: 0;
+  width: 30%;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+.nav a {
+  text-decoration: none;
+  color: white;
+}
+.card {
+  background-color: #fff;
+  border: 1px solid rgb(218, 227, 234);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+}
+.card img {
+  border-radius: 10%;
+  margin-right: 1rem;
+}
+.card-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card-content span {
+  color: #666;
+}
+.card-content div {
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  color: #333;
+}
+.card-content div p:first-child {
+  font-style: italic;
+}
+.card-content div p {
+  margin: 0;
+}
+.card-content a {
+  text-decoration: none;
+  color: #2980b9;
+}
