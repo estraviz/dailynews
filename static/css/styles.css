@@ -3,21 +3,31 @@ body {
   background-color: white;
   margin: 0;
 }
-header .title {
+.title {
   background-color: aliceblue;
-  color: #3498db;
+  color: white;
   margin: 0;
   padding: 1.8rem;
   text-align: center;
   font-size: 2.5rem;
 }
-.subtitle {
-  color: #666;
-  text-align: center;
-}
 .container {
+  width: 90%;
   margin: 0 auto;
-  width: 80%;
+}
+.cards {
+  display: flex;
+  justify-content: space-between;
+}
+.card {
+  padding: 2em;
+  font-size: 2rem;
+  /* width: 14rem; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid #ccc;
 }
 .nav {
   background-color: #3498db;
@@ -36,6 +46,10 @@ header .title {
 .nav a {
   text-decoration: none;
   color: white;
+}
+.nav a.active {
+  border-bottom: 2px solid #fff;
+  padding: 0.2rem 0;
 }
 .card {
   background-color: #fff;

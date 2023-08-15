@@ -1,23 +1,4 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Daily News</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-      crossorigin="anonymous"
-    />
-    <link href="{% static 'css/results.css' %}" rel="stylesheet" />
-  </head>
-  <body>
-    <header>
-      <header>
-      <div class="title"><h1>{{ title }}</h1></div>
+{% extends "base.html" %} {% load static %} {% block content %}
       <nav class="nav">
           <ul>
             {% for link in links %}
@@ -28,7 +9,7 @@
           </ul>
       </nav>
     </header>
-    <h2 class="subtitle my-5">{{ subtitle }}</h2>
+    <h2 class="subtitle text-center my-5">{{ subtitle }}</h2>
     <div class="container">
       {% for result in results %}
       <div class="card flex flex-row">
@@ -46,5 +27,4 @@
       </div>
       {% endfor %}
     </div>
-  </body>
-</html>
+    {% endblock %}

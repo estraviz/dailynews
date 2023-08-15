@@ -4,6 +4,10 @@ import config
 
 # https://docs.djangoproject.com/en/4.2/topics/http/views/
 
+TOPSTORIES = "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key="
+MOSTPOPULAR = "https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key="
+FEED = "https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key="
+
 links = [
     {"name": "Home", "path": "/"},
     {"name": "Top Stories", "path": "/topstories"},
@@ -25,46 +29,25 @@ def home(request):
     )
 
 
-def topstories(request):
-    results = getResults(f"https://api.nytimes.com/svc/topstories/v2/arts.json?api-key={config.api_key}")
-    print(results)
+def results(request):
+    pathname = str(request).split("/").pop(1)
+    results = []
+    subtitle = ""
+
+    if (pathname == "topstories"):
+        results = getResults(TOPSTORIES + config.api_key)
+        subtitle = "Top Stories"
+    elif (pathname == "popular"):
+        results = getResults(MOSTPOPULAR + config.api_key)
+        subtitle = "Most Popular Stories"
+    elif (pathname == "feed"):
+        results = getResults(FEED + config.api_key)
+        subtitle = "News Feed Stories"
+    else:
+        raise ValueError("Incorrect pathname")
+
     return render(
         request,
         'articles/results.html',
-        {
-            'title': 'Daily News!',
-            "subtitle": "Top Stories",
-            "results": results,
-            "links": links
-        }
-    )
-
-
-def popular(request):
-    results = getResults(f"https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key={config.api_key}")
-    print(results)
-    return render(
-        request,
-        'articles/results.html',
-        {
-            'title': 'Daily News!',
-            "subtitle": "Most Popular Stories",
-            "results": results,
-            "links": links
-        }
-    )
-
-
-def feed(request):
-    results = getResults(f"https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key={config.api_key}")
-    print(results)
-    return render(
-        request,
-        'articles/results.html',
-        {
-            'title': 'Daily News!',
-            "subtitle": "News Feed Stories",
-            "results": results,
-            "links": links
-        }
+        {'title': 'Daily News!', 'subtitle': subtitle, 'results': results, 'links': links}
     )
