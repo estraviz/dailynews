@@ -1,3 +1,4 @@
+{% load custom_tags %}
 <div class="card flex flex-row">
   <img
     src="{{ result.thumbnail }}"
@@ -11,7 +12,7 @@
       <span>{{ result.section | lower }}</span>
     </div>
     <div>
-      <p>- {{ result.author }}</p>
+      <p>- {{ result.author | firstCap }}</p>
       <p>{{ result.createdAt | date:"l, F jS, Y" }}</p>
     </div>
   </div>
