@@ -1,21 +1,9 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} {% load static %} {% block content %}
+
 <div class="container">
   <div class="row mt-5 mx-1">
     {% for api in apis %}
-    <div class="col">
-      <div class="card">
-        <div class="card-body" style="flex-direction: column !important">
-          <p class="text-center">
-            <a
-              href="{{ api.path }}"
-              class="h3 text-secondary"
-              style="text-decoration: none"
-              >{{ api.name }}</a
-            >
-          </p>
-        </div>
-      </div>
-    </div>
+    {% include 'articles/includes/home_card.html' with api=api %}
     {% endfor %}
   </div>
 </div>
