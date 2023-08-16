@@ -2,6 +2,8 @@
 {% load custom_tags %}
 {% include 'articles/includes/navigation.html' with links=links %}
     </header>
+    {% load cache %}
+    {% cache 500 results %}
     <h2 class="subtitle text-center my-5">{{ subtitle }}</h2>
     <div class="container">
       {{ results | display_length }}
@@ -9,4 +11,5 @@
         {% include 'articles/includes/card.html' with result=result %}
       {% endfor %}
     </div>
+    {% endcache %}
     {% endblock %}

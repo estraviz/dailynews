@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from common.utils import getResults
+from django.views.decorators.cache import cache_page
 import config
 
 # https://docs.djangoproject.com/en/4.2/topics/http/views/
@@ -16,6 +17,7 @@ links = [
 ]
 
 
+@cache_page(600)
 def home(request):
     apis = [
         {"name": "Top Stories API", "path": "/topstories"},
