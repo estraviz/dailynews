@@ -1,10 +1,12 @@
-{% extends "base.html" %} {% load static %} {% block content %}
-{% include "articles/includes/navigation.html" %}
+{% extends 'base.html' %} {% load static %} {% block content %}
+{% load custom_tags %}
+{% include 'articles/includes/navigation.html' with links=links %}
     </header>
     <h2 class="subtitle text-center my-5">{{ subtitle }}</h2>
     <div class="container">
+      {{ results | display_length }}
       {% for result in results %}
-        {% include "articles/includes/card.html" %}
+        {% include 'articles/includes/card.html' with result=result %}
       {% endfor %}
     </div>
     {% endblock %}
