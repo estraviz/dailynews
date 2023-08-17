@@ -9,25 +9,34 @@ TOPSTORIES = "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key="
 MOSTPOPULAR = "https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key="
 FEED = "https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key="
 
-links = [
+LINKS = [
     {"name": "Home", "path": "/"},
     {"name": "Top Stories", "path": "/topstories"},
     {"name": "Most Popular", "path": "/popular"},
     {"name": "Real Time Feed", "path": "/feed"}
 ]
 
+APIS = [
+    {"name": "Top Stories API", "path": "/topstories"},
+    {"name": "Most Popular API", "path": "/popular"},
+    {"name": "Times Wire API", "path": "/feed"},
+]
+
+
+def index(request):
+    return render(
+        request,
+        'articles/index.html',
+        {'title': 'Daily News', 'apis': APIS}
+    )
+
 
 @cache_page(600)
 def home(request):
-    apis = [
-        {"name": "Top Stories API", "path": "/topstories"},
-        {"name": "Most Popular API", "path": "/popular"},
-        {"name": "Times Wire API", "path": "/feed"},
-    ]
     return render(
         request,
         'articles/home.html',
-        {'title': 'Daily News!', "apis": apis}
+        {'title': 'Daily News!', "apis": APIS}
     )
 
 
@@ -51,5 +60,5 @@ def results(request):
     return render(
         request,
         'articles/results.html',
-        {'title': 'Daily News!', 'subtitle': subtitle, 'results': results, 'links': links}
+        {'title': 'Daily News!', 'subtitle': subtitle, 'results': results, 'links': LINKS}
     )

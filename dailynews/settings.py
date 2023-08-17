@@ -70,6 +70,13 @@ TEMPLATES = [
             ],
         },
     },
+    {
+        'BACKEND': 'django.template.backends.jinja2.Jinja2',
+        'DIRS': [
+            BASE_DIR / 'static/templates',
+            BASE_DIR / 'jinja2/',
+        ],
+    },
 ]
 
 WSGI_APPLICATION = 'dailynews.wsgi.application'
