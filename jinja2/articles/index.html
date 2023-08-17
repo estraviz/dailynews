@@ -1,0 +1,20 @@
+{% extends 'base_jinja2.html' %}
+{% block content %}
+<div class="container">
+
+    {% set apis = [
+    {"name": "Top Stories API", "path": "/topstories"},
+    {"name": "Most Popular API", "path": "/popular"},
+    {"name": "Times Wire API", "path": "/feed"},
+    ] %}
+
+    <ul class="mt-5" style="display: flex; justify-content: space-around">
+        {% for api in apis %}
+        <li class="card home_card h3 p-5" style="list-style-type: none;"> <a class="text-dark"
+                style="text-decoration: none;" href="{{ api.path }}">{{ api.name
+                }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
